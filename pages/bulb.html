@@ -35,15 +35,8 @@
     <!-- Conteúdo da página -->
     <div class="content">
         <h1>Casos de Surtos Registrados</h1>
-
-        <div class="outbreak-case" data-case-id="1">
-            <p>Surto de Dengue - São Paulo</p>
-            <button class="view-case-btn" data-case-id="1">Ver Detalhes</button>
-        </div>
-
-        <div class="outbreak-case" data-case-id="2">
-            <p>Surto de Zika - Rio de Janeiro</p>
-            <button class="view-case-btn" data-case-id="2">Ver Detalhes</button>
+        <div class="lista-casos">
+            
         </div>
     </div>
 
@@ -55,7 +48,10 @@
         </div>
     </div>
 
-    <script src="modal.js"></script>
+    <button class="add-case-btn" style="display: flex; left: 50%; position: relative;">Adicionar caso teste</button>
+
+    <script src="modal.js" type="module"></script>
+    <script src="../firebase/firebaseConfig.js"type="module" defer></script>
 </body>
 
 </html>
