@@ -5,18 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Novo Caso</title>
-    <link rel="stylesheet" href="styleCasosDeSurto.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/style.css">
+     <!-- Menu -->
+     <div class="menu">
+        <a href="./pages/home.html" class="menu-link">
+            <ion-icon name="home-outline"></ion-icon>
+        </a>
+        <a href="map.html" class="menu-link">
+            <ion-icon name="flash"></ion-icon>
+        </a>
+        <a href="../pages/create-case.html" class="menu-link">
+            <ion-icon name="code-working"></ion-icon>
+        </a>
+        <a href="bulb.html" class="menu-link">
+            <ion-icon name="bulb-outline"></ion-icon>
+        </a>
+        <a href="flash-outline.html" class="menu-link">
+            <ion-icon name="flash-outline"></ion-icon>
+        </a>
+    </div>
 
     <style>
-        body {
+     
+        
+        /* Restante do estilo do formulário */
+        .container {
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
         }
 
         .form-container {
@@ -26,11 +50,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 400px;
             width: 100%;
+            margin-top: 20px;
         }
 
         .form-container h1 {
             text-align: center;
             margin-bottom: 20px;
+            color: black;
         }
 
         .form-group {
@@ -41,6 +67,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: black;
         }
 
         .form-group input,
@@ -85,28 +112,10 @@
     </style>
 </head>
 
-
-
 <body>
-
-
-    <div class="menu">
-        <a href="../index.html" class="menu-link">
-            <ion-icon name="home-outline"></ion-icon>
-        </a>
-        <a href="map.html" class="menu-link">
-            <ion-icon name="flash"></ion-icon>
-        </a>
-        <a href="../pages/create-case.html" class="menu-link">
-            <ion-icon name="code-working"></ion-icon>
-        </a>
-        <a href="bulb.html" class="menu-link">
-            <ion-icon name="bulb-outline"></ion-icon>
-        </a>
-        <a href="flash-outline.html" class="menu-link">
-            <ion-icon name="flash-outline"></ion-icon>
-        </a>
-    </div>
+   
+    <div class="container">
+    <!-- Formulário -->
     <div class="form-container">
         <h1>Criar Novo Caso</h1>
         <form id="case-form">
@@ -122,7 +131,6 @@
                 <label for="state">Estado</label>
                 <select id="state" name="state" required>
                     <option value="">Selecione um estado</option>
-                    <!-- Lista de estados do Brasil -->
                     <option value="Acre">Acre</option>
                     <option value="Alagoas">Alagoas</option>
                     <option value="Amapá">Amapá</option>
@@ -170,10 +178,8 @@
             <button type="submit" class="submit-btn">Enviar</button>
         </form>
     </div>
-
-  
-   <script src="creatingCases.js" type="module"></script>
-
+</div>
+    <script src="creatingCases.js" type="module"></script>
 </body>
 
 </html>

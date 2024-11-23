@@ -1,310 +1,118 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-        
-    <title>HealthMap</title>
-
+    <title>Login</title>
     <style>
-        /* Estilos globais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
+
         body {
-            font-family: "Roboto", sans-serif;
-            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            flex-direction: column;
         }
-        .top-bar {
-            padding: 20px;
-            background-color: #202740;
-            color: #fff;
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .title .health {
+            color: blue; /* Cor azul para "Health" */
+        }
+
+        .title .map {
+            color: red;  /* Cor vermelha para "Map" */
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .top-bar h1 {
-            margin-bottom: 10px;
+
+        .login-container h1 {
+            margin-bottom: 1.5rem;
+            color: #333333;
         }
-        .top-bar p {
-            margin: 5px 0;
-        }
-        .menu {
-            position: fixed;
-            width: 32px;
-            padding: 12px 8px;
-            margin-left: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            background-color: #202740;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-            transition: transform 0.5s;
-            border-radius: 50px;
-            z-index: 999;
-            transform: translateY(-50%);
-            top: 50%;
-        }
-        .menu-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            border-radius: 50%;
-            color: #fff;
-        }
-        .menu-link.active {
-            background-color: #1e94d2;
-        }
-        .menu-link:hover {
-            background-color: #131826;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 20px;
-        }
-        .carousel-container, .chatbot-container {
-            flex: 1;
-        }
-        .carousel {
+
+        .login-container input {
             width: 100%;
-            max-width: 700px;
-            position: relative;
-            overflow: hidden;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
         }
-        .carousel-img {
+
+        .login-container input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        .login-container button {
             width: 100%;
-            height: 450px;
-            object-fit: cover;
-            display: block;
-            transition: opacity 0.5s ease;
-        }
-        .chatbot-box {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            width: 100%;
-            height: 100%;
-        }
-        .chatbot-messages {
-            height: 200px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            background-color: #fff;
-        }
-        .chat-input {
-            width: calc(100% - 90px);
-            padding: 10px;
-            margin-right: 10px;
-        }
-        button {
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
+            padding: 0.75rem;
+            background-color: #4a90e2;
+            color: white;
             border: none;
             border-radius: 5px;
+            font-size: 1rem;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .login-container button:hover {
+            background-color: #357ab8;
         }
-        .support-carousel {
-            margin-top: 20px;
-            text-align: center;
+
+        .login-container .signup {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #555;
         }
-        .supporter {
-            display: inline-block;
-            margin: 10px;
-            text-align: center;
+
+        .login-container .signup a {
+            color: #4a90e2;
+            text-decoration: none;
         }
-        .supporter img {
-            width: 100px;
-            height: auto;
-        }
-        .map-container {
-            margin: 20px 0;
-            width: 100%;
-            height: 450px;
-        }
-        @media screen and (max-width: 768px) {
-            .header {
-                flex-direction: column;
-            }
-            .carousel-container, .chatbot-container {
-                width: 100%;
-            }
+
+        .login-container .signup a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-
 <body>
+    <div class="title">
+        <span class="health">Health</span><span class="map">Map</span>
+    </div>
 
-    <!-- Topo com nome do app, email e contato -->
-    <div class="top-bar">
-        <div class="app-info">
-            <h1>HealthMap</h1>
-            <p>Email: contato@healthmap.com</p>
-            <p>Contato: +55 (11) 1234-5678</p>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form >
+            <input type="text" name="username" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup">
+            Não tem uma conta? <a href="./pages/register.html">Cadastrar conta</a>
         </div>
     </div>
-
-    <div class="menu">
-        <a href="#" class="menu-link">
-            <ion-icon name="home-outline"></ion-icon>
-        </a>
-        <a href="pages/map.html" class="menu-link">
-            <ion-icon name="flash"></ion-icon>
-        </a>
-        <a href="pages/create-case.html" class="menu-link active">
-            <ion-icon name="code-working"></ion-icon>
-        </a>
-        <a href="pages/bulb.html" class="menu-link">
-            <ion-icon name="bulb-outline"></ion-icon>
-        </a>
-        <a href="pages/flash-outline.html" class="menu-link">
-            <ion-icon name="flash-outline"></ion-icon>
-        </a>
-    </div>
-
-    <div class="header">
-        <div class="carousel-container">
-            <div class="carousel">
-                <img src="images/On Our Hand.png" class="carousel-img" alt="Imagem 1">
-                <img src="images/On Our Hand (1).png" class="carousel-img" alt="Imagem 2">
-                <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2024/01/dengue-hemo.png" class="carousel-img" alt="Imagem 3">
-            </div>
-        </div>
-
-        <div class="chatbot-container">
-            <div class="chatbot-box">
-                <h2>Precauções contra a Dengue</h2>
-                <div class="chatbot-messages" id="chatbot-messages">
-                    <div class="bot-message">
-                        <p><strong>Bot:</strong> Olá! Como posso ajudar? Pergunte sobre precauções contra a dengue.</p>
-                    </div>
-                </div>
-                <input type="text" id="user-input" placeholder="Digite sua pergunta..." class="chat-input">
-                <button onclick="sendMessage()">Enviar</button>
-
-                <!-- Carrossel de apoiadores dentro do chatbot-box -->
-                <div class="support-carousel">
-                    <h3>Nossos Apoiadores</h3>
-                    <div class="supporter">
-                        <a href="https://www.sp.senac.br/" target="_blank">
-                            <img src="https://tse3.mm.bing.net/th?id=OIP.DrQTBEOfGEc9e_faw9n2HAHaE3&pid=Api&P=0&h=180" alt="Senac">
-                            <p>Senac</p>
-                        </a>
-                    </div>
-                    <div class="supporter">
-                        <a href="https://dengue.org.br/" target="_blank">
-                            <img src="https://tse2.mm.bing.net/th?id=OIP.jC3giN3aAXUiyLeflo-vIQHaHa&pid=Api&P=0&h=180" alt="Site Oficial Dengue">
-                            <p>Site Oficial Dengue</p>
-                        </a>
-                    </div>
-                    <div class="supporter">
-                        <a href="https://aacd.org.br/" target="_blank">
-                            <img src="https://tse1.mm.bing.net/th?id=OIP.trpiNQstjvQ5Q8x0QxAG7wHaH8&pid=Api&P=0&h=180" alt="AACD">
-                            <p>AACD</p>
-                        </a>
-                    </div>
-                    <div class="supporter">
-                        <a href="https://sosamazonia.org.br/" target="_blank">
-                            <img src="https://tse1.mm.bing.net/th?id=OIP.OFEnDYnC_jX78OKnm0Q3hQAAAA&pid=Api&P=0&h=180" alt="SOS Amazonia">
-                            <p>SOS Amazonia</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="map-container">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.9027388461944!2d-46.634774125254515!3d-23.550520614672013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5854a65f9e69%3A0x4db3c57d90a0b4ab!2sPra%C3%A7a%20da%20S%C3%A9!5e0!3m2!1spt-BR!2sbr!4v1694004079054!5m2!1spt-BR!2sbr"
-            width="100%" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
-
-    <div class="container">
-        <!-- Conteúdo da página -->
-    </div>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script>
-        // Carrossel de imagens
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.carousel-img');
-        const imageCount = images.length;
-
-        function changeImage() {
-            images[currentImageIndex].style.opacity = '0';
-            currentImageIndex = (currentImageIndex + 1) % imageCount;
-            images[currentImageIndex].style.opacity = '1';
-        }
-
-        setInterval(changeImage, 3000); // Alternar imagem a cada 3 segundos
-
-        // Chatbot simples com respostas personalizadas
-        function sendMessage() {
-            const userInput = document.getElementById('user-input').value;
-            const chatbotMessages = document.getElementById('chatbot-messages');
-            if (userInput) {
-                // Adiciona a mensagem do usuário
-                const userMessage = `<div class="user-message"><p><strong>Você:</strong> ${userInput}</p></div>`;
-                chatbotMessages.innerHTML += userMessage;
-
-                // Respostas automáticas do chatbot
-                let botResponse = '';
-
-                if (userInput.toLowerCase().includes('prevenção')) {
-                    botResponse = 'Para prevenir a dengue, evite água parada e use repelente!';
-                } else if (userInput.toLowerCase().includes('sintomas')) {
-                    botResponse = 'Os sintomas da dengue incluem febre alta, dores musculares e nas articulações.';
-                } else if (userInput.toLowerCase().includes('olá')) {
-                    botResponse = 'Olá! Como posso ajudar você hoje?';
-                } else if (userInput.toLowerCase().includes('bom dia')) {
-                    botResponse = 'Bom dia! Espero que você esteja bem. Como posso ajudar?';
-                } else if (userInput.toLowerCase().includes('boa tarde')) {
-                    botResponse = 'Boa tarde! Como posso ajudar você?';
-                } else if (userInput.toLowerCase().includes('boa noite')) {
-                    botResponse = 'Boa noite! Está precisando de ajuda com algo?';
-                } else if (userInput.toLowerCase().includes('mal')) {
-                    botResponse = 'Sinto muito que você esteja se sentindo mal. É importante consultar um médico se você estiver com sintomas graves.';
-                } else {
-                    botResponse = 'Desculpe, não entendi. Tente perguntar sobre prevenção, sintomas ou como você está se sentindo.';
-                }
-
-                // Adiciona a resposta do bot
-                const botMessage = `<div class="bot-message"><p><strong>Bot:</strong> ${botResponse}</p></div>`;
-                chatbotMessages.innerHTML += botMessage;
-
-                // Limpa o campo de entrada
-                document.getElementById('user-input').value = '';
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll automático para o final
-            }
-        }
-    </script>
+    <script src="./login.js" type="module"></script>
 </body>
-
 </html>
