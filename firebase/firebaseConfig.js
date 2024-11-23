@@ -71,7 +71,39 @@ export function editCases(id, nome, idade, cidade, data, dor){
         alert(error);
     })
 }
+export function showCasesFiltered(caseRegion){
+    onValue(casosRef, (snapshot) => {
+        // Limpar a lista de casos na tela
+        const casosList = document.getElementsByClassName("lista-casos")[0];
+        casosList.innerHTML = "";
+        
+    
+        // Iterar sobre os dados do snapshot
+        snapshot.forEach((childSnapshot) => {
+        const caso = childSnapshot.val();
+        const caseReg = caso.cidade;
+        const caseId = childSnapshot.key
 
+        if(caseReg.includes(caseRegion)){
+            const casoElement = document.createElement("div");
+        casoElement.innerHTML = `
+            <div class="outbreak-case" data-case-id="1">
+            <p>Surto de Dengue - ${caso.cidade}</p>
+            <button class="view-case-btn" data-case-id="${caseId}">Ver Detalhes</button>
+            <button class="editMenu-case-btn" data-case-id="${caseId}">Editar</button>
+            <button class="remove-case-btn" data-case-id="${caseId}">Remover</button>
+        </div>
+
+        `;
+    
+        // Adicionar o elemento HTML à lista de casos
+        casosList.appendChild(casoElement);
+        }
+        // Criar um elemento HTML para cada caso
+        
+        });
+    })
+}
 export function showCases(){
 
     onValue(casosRef, (snapshot) => {

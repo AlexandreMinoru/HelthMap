@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Novo Caso</title>
+    <link rel="stylesheet" href="styleCasosDeSurto.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .pain-level {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pain-level button {
+            font-size: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .pain-level button.selected {
+            transform: scale(1.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+    <div class="menu">
+        <a href="../index.html" class="menu-link">
+            <ion-icon name="home-outline"></ion-icon>
+        </a>
+        <a href="map.html" class="menu-link">
+            <ion-icon name="flash"></ion-icon>
+        </a>
+        <a href="../pages/create-case.html" class="menu-link">
+            <ion-icon name="code-working"></ion-icon>
+        </a>
+        <a href="bulb.html" class="menu-link">
+            <ion-icon name="bulb-outline"></ion-icon>
+        </a>
+        <a href="flash-outline.html" class="menu-link">
+            <ion-icon name="flash-outline"></ion-icon>
+        </a>
+    </div>
+    <div class="form-container">
+        <h1>Criar Novo Caso</h1>
+        <form id="case-form">
+            <div class="form-group">
+                <label for="patient-name">Nome do Paciente</label>
+                <input type="text" id="patient-name" name="patientName" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Idade</label>
+                <input type="number" id="age" name="age" required min="0" max="150">
+            </div>
+            <div class="form-group">
+                <label for="state">Estado</label>
+                <select id="state" name="state" required>
+                    <option value="">Selecione um estado</option>
+                    <!-- Lista de estados do Brasil -->
+                    <option value="Acre">Acre</option>
+                    <option value="Alagoas">Alagoas</option>
+                    <option value="Amapá">Amapá</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Ceará">Ceará</option>
+                    <option value="Distrito Federal">Distrito Federal</option>
+                    <option value="Espírito Santo">Espírito Santo</option>
+                    <option value="Goiás">Goiás</option>
+                    <option value="Maranhão">Maranhão</option>
+                    <option value="Mato Grosso">Mato Grosso</option>
+                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                    <option value="Minas Gerais">Minas Gerais</option>
+                    <option value="Pará">Pará</option>
+                    <option value="Paraíba">Paraíba</option>
+                    <option value="Paraná">Paraná</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Piauí">Piauí</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                    <option value="Rondônia">Rondônia</option>
+                    <option value="Roraima">Roraima</option>
+                    <option value="Santa Catarina">Santa Catarina</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Sergipe">Sergipe</option>
+                    <option value="Tocantins">Tocantins</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Data</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label>Nível de Dor</label>
+                <div class="pain-level" id="pain-level">
+                    <button type="button" data-pain="2">😐</button>
+                    <button type="button" data-pain="5">🙁</button>
+                    <button type="button" data-pain="7">😫</button>
+                    <button type="button" data-pain="9">😖</button>
+                    <button type="button" data-pain="10">😭</button>
+                </div>
+            </div>
+            <input type="hidden" id="pain-level-input" name="painLevel">
+            <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+    </div>
+
+  
+   <script src="creatingCases.js" type="module"></script>
+
+</body>
+
+</html>

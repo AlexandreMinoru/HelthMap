@@ -1,4 +1,4 @@
-import { showCases, getCase, removeCases, editCases, addNewCases } from "../firebase/firebaseConfig.js";
+import { showCases, getCase, removeCases, editCases, addNewCases, showCasesFiltered } from "../firebase/firebaseConfig.js";
  const renderCases = new Promise(showCases);
 
 
@@ -159,7 +159,28 @@ import { showCases, getCase, removeCases, editCases, addNewCases } from "../fire
     }
     
 
-    const addCaseBtn = document.querySelector(".add-case-btn");
-    addCaseBtn.addEventListener("click", () =>{
-        addNewCases("Teste", "25", "São Paulo", "25/07/2001", 5)
-    })
+
+
+    const filterInput = document.querySelector("#filter-bar");
+    filterInput.addEventListener("change", (e) => {
+        e.preventDefault()
+        filterCases(e.target.value)
+    });
+    function filterCases(text){
+        if(text == ""){
+            showCases();
+        }
+        showCasesFiltered(text);
+    }
+
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Recupera o estado da URL
+    const state = getQueryParam('state');
+    if (state) {
+        filterInput.value = state
+        showCasesFiltered(state); // Filtra os casos pelo estado
+    }
