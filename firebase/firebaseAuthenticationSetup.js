@@ -37,7 +37,7 @@ export function login(email, password){
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password).then((userCredential) =>{
-        window.location.href = "../pages/home.html"
+        return true;
     }).catch((error) =>{
         const errorMessage = error.message;
         alert("Email/senha errados")

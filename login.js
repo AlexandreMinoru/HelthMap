@@ -10,7 +10,9 @@ function validateLogin(event) {
     if (email === '' || password === '') {
         alert('Por favor, preencha todos os campos.');
     } else {
-        login(email, password)
+        if(login(email, password)){
+            window.location.href = "../pages/home.html"
+        }
     }
 }
 
