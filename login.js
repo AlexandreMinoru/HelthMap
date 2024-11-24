@@ -11,7 +11,7 @@ function validateLogin(event) {
         alert('Por favor, preencha todos os campos.');
     } else {
         if(login(email, password)){
-            window.location.href = "../pages/home.html"
+            window.location.href = "HelthMap/pages/home.html"
         }
     }
 }
